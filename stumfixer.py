@@ -16,7 +16,7 @@ def daemonize(pidfile, *, stdin="/dev/null", stdout="/dev/null", stderr="/dev/nu
     Creates a daemon.
     """
     if os.path.exists(pidfile):
-        raise RuntimeError("Already running")
+        exit(1)
 
     # First fork (detaches from parent).
     try:
@@ -140,9 +140,6 @@ if __name__ == "__main__":
         raise SystemExit(1)
 
     if sys.argv[1] == "start":
-        # Clean up log file.
-        if os.path.exists(LOGFILE):
-            os.remove(LOGFILE)
         try:
             daemonize(PIDFILE, stdout=LOGFILE, stderr=LOGFILE)
         except RuntimeError as e:
