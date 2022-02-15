@@ -7,10 +7,10 @@ No longer do I need to change this manually all the time :)
 ## Run
 
 To start:
-'''
+```
 python3 stumfixer.py start
-'''
+```
 and to stop:
-'''
+```
 python3 stumfixer.py stop
-'''
+```
